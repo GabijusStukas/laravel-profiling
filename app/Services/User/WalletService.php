@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Services\User;
 
 use App\Repositories\UserWalletRepository;
 
-class UserWalletService
+class WalletService
 {
     private const POINTS_TO_USD = 0.01;
 

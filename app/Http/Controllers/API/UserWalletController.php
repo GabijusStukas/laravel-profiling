@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\API;
 
-use App\Services\UserWalletService;
+use App\Services\User\WalletService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
@@ -13,10 +13,10 @@ class UserWalletController extends BaseApiController
 {
     /**
      * @param Request $request
-     * @param UserWalletService $service
+     * @param WalletService $service
      * @return JsonResponse
      */
-    public function show(Request $request, UserWalletService $service): JsonResponse
+    public function show(Request $request, WalletService $service): JsonResponse
     {
         try {
             return $this->success(

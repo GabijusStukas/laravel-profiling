@@ -5,26 +5,30 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
 /**
  * @property int $id
  * @property string $question
  * @property string $type
- * @property string $options
+ * @property array $options
  * @property string $created_at
  * @property string $updated_at
  */
 class ProfilingQuestion extends Model
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+
+    public const TYPE_MULTIPLE_CHOICE = 'multiple-choice';
+    public const TYPE_SINGLE_CHOICE = 'single-choice';
+    public const TYPE_DATE = 'date';
+    public const TYPE_OPEN = 'open';
 
     public const TYPES = [
-        'multiple-choice',
-        'single-choice',
-        'date',
-        'open'
+        self::TYPE_MULTIPLE_CHOICE,
+        self::TYPE_SINGLE_CHOICE,
+        self::TYPE_DATE,
+        self::TYPE_OPEN
     ];
 
     /**

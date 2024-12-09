@@ -15,7 +15,7 @@ class ProfilingQuestionsSeeder extends Seeder
         ProfilingQuestion::query()->create([
             'question' => 'Gender',
             'type' => 'single-choice',
-            'options' => json_encode(['Male', 'Female']),
+            'options' => ['Male', 'Female'],
         ]);
 
         ProfilingQuestion::query()->create([
