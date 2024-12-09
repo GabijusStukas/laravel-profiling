@@ -4,28 +4,42 @@ namespace App\Models;
 
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $country
+ * @property string $password
+ * @property string $email_verified_at
+ * @property string $remember_token
+ * @property string $created_at
+ * @property string $updated_at
+
+ * @property UserWallet $userWallet
+ * @property Collection<int, PointsTransaction> $pointsTransactions
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array<int, string>
      */
     protected $fillable = [
         'name',
+        'country',
         'email',
         'password',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
      * @var array<int, string>
      */
     protected $hidden = [
@@ -34,8 +48,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
      * @return array<string, string>
      */
     protected function casts(): array

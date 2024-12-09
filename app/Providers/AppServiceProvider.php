@@ -2,21 +2,27 @@
 
 namespace App\Providers;
 
+use App\Services\Proxycheck\Client;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * @return void
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(Client::class, function () {
+            return new Client(
+                config('services.proxycheck.key'),
+                config('services.proxycheck.base_url')
+            );
+        });
     }
 
     /**
-     * Bootstrap any application services.
+     * @return void
      */
     public function boot(): void
     {
