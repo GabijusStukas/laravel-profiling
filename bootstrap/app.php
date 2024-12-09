@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\EnsureEmailIsVerified;
+use App\Http\Middleware\RestrictVPN;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -25,6 +26,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             '*',
         ]);
+
+        $middleware->append(RestrictVPN::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

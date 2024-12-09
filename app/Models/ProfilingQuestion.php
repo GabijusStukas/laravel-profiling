@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $question
+ * @property string $type
+ * @property string $options
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class ProfilingQuestion extends Model
 {
     /** @use HasFactory<UserFactory> */
@@ -20,13 +28,18 @@ class ProfilingQuestion extends Model
     ];
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array<int, string>
      */
     protected $fillable = [
         'question',
         'type',
         'options',
+    ];
+
+    /**
+     * @var array<string, string> $casts
+     */
+    protected $casts = [
+        'options' => 'array',
     ];
 }
