@@ -9,7 +9,6 @@ use App\Exceptions\ProfileUpdateException;
 use App\Models\ProfilingQuestion;
 use App\Repositories\PointsTransactionRepository;
 use App\Repositories\UserProfileRepository;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 abstract class AbstractQuestionHandler

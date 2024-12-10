@@ -9,6 +9,23 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
+/**
+ * @OA\Info(
+ *     title="Profiling API",
+ *     version="1.0.0"
+ * )
+ *
+ * @OA\Schema(
+ *      schema="Pagination",
+ *      type="object",
+ *      @OA\Property(property="count", type="integer", example=12),
+ *      @OA\Property(property="total", type="integer", example=12),
+ *      @OA\Property(property="perPage", type="integer", example=15),
+ *      @OA\Property(property="currentPage", type="integer", example=1),
+ *      @OA\Property(property="totalPages", type="integer", example=1),
+ *      @OA\Property(property="links", type="object", example={})
+ *  )
+ */
 class BaseApiController extends Controller
 {
     /**

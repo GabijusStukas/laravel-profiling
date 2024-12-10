@@ -11,6 +11,18 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 
 /**
+ * @OA\Schema(
+ *     schema="User",
+ *     type="object",
+ *     @OA\Property(property="id", type="integer", example=1),
+ *     @OA\Property(property="name", type="string", example="John Doe"),
+ *     @OA\Property(property="email", type="string", format="email", example="john.doe@example.com"),
+ *     @OA\Property(property="country", type="string", nullable=true, example="US"),
+ *     @OA\Property(property="email_verified_at", type="string", nullable=true, format="date-time", example="2023-01-01T00:00:00Z"),
+ *     @OA\Property(property="created_at", type="string", format="date-time", example="2023-01-01T00:00:00Z"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", example="2023-01-01T00:00:00Z")
+ * )
+ *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -20,7 +32,6 @@ use Illuminate\Support\Collection;
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
-
  * @property UserWallet $userWallet
  * @property Collection<int, PointsTransaction> $pointsTransactions
  */

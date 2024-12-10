@@ -7,6 +7,20 @@ namespace App\Transformers;
 use App\Models\PointsTransaction;
 use Flugg\Responder\Transformers\Transformer;
 
+/**
+ * @OA\Schema(
+ *     schema="PointsTransactionResponse",
+ *     type="object",
+ *     @OA\Property(property="status", type="integer", example=200),
+ *     @OA\Property(property="success", type="boolean", example=true),
+ *     @OA\Property(
+ *         property="data",
+ *         type="array",
+ *         @OA\Items(ref="#/components/schemas/PointsTransaction")
+ *     ),
+ *     @OA\Property(property="pagination", ref="#/components/schemas/Pagination")
+ * )
+ */
 class PointsTransactionTransformer extends Transformer
 {
     /**

@@ -5,6 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @OA\Schema(
+ *      schema="PointsTransaction",
+ *      type="object",
+ *      @OA\Property(property="id", type="integer", example=1),
+ *      @OA\Property(property="user_id", type="integer", example=1),
+ *      @OA\Property(property="points", type="integer", example=100),
+ *      @OA\Property(property="claimed_at", type="string", nullable=true, format="date-time", example="2023-01-01T00:00:00Z"),
+ *      @OA\Property(property="created_at", type="string", format="date-time", example="2023-01-01T00:00:00Z"),
+ *      @OA\Property(property="updated_at", type="string", format="date-time", example="2023-01-01T00:00:00Z")
+ * )
+ *
  * @property int $id
  * @property int $user_id
  * @property int $points
