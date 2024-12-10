@@ -12,11 +12,11 @@ use Throwable;
 
 class ProxyService
 {
-    private Client $client;
-
-    public function __construct(Client $client)
+    /**
+     * @param Client $client
+     */
+    public function __construct(private Client $client)
     {
-        $this->client = $client;
     }
 
     /**

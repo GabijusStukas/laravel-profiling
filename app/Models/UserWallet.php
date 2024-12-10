@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserWallet extends Model
 {
+    public const POINTS_TO_USD = 0.01;
+
     /**
      * @var array<int, string>
      */
