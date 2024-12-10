@@ -7,18 +7,18 @@ namespace App\DTOs;
 class ProfileUpdateDTO
 {
     /**
-     * @param string $answer
+     * @param mixed $answer
      * @param int $questionId
      * @param int $userId
      */
-    public function __construct(private string $answer, private int $questionId, private int $userId)
+    public function __construct(private mixed $answer, private int $questionId, private int $userId)
     {
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getAnswer(): string
+    public function getAnswer(): mixed
     {
         return $this->answer;
     }

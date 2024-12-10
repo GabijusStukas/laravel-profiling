@@ -8,7 +8,7 @@ use App\DTOs\ProfileUpdateDTO;
 use App\Exceptions\ProfileUpdateException;
 use App\Models\ProfilingQuestion;
 
-class SingleChoiceQuestionHandler extends AbstractQuestionHandler
+class DateQuestionHandler extends AbstractQuestionHandler
 {
     /**
      * @param ProfilingQuestion $question
@@ -18,8 +18,8 @@ class SingleChoiceQuestionHandler extends AbstractQuestionHandler
      */
     protected function isAnswerValid(ProfilingQuestion $question, ProfileUpdateDTO $dto): void
     {
-        if (!in_array($dto->getAnswer(), $question->options)) {
-            throw new ProfileUpdateException('Invalid answer ' . $dto->getAnswer());
+        if (!strtotime($dto->getAnswer())) {
+            throw new ProfileUpdateException('Invalid date format');
         }
     }
 }

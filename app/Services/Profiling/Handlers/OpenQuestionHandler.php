@@ -16,12 +16,10 @@ class OpenQuestionHandler extends AbstractQuestionHandler
      * @return void
      * @throws ProfileUpdateException
      */
-    public function updateProfile(ProfilingQuestion $question, ProfileUpdateDTO $dto): void
+    public function isAnswerValid(ProfilingQuestion $question, ProfileUpdateDTO $dto): void
     {
         if (!is_string($dto->getAnswer())) {
             throw new ProfileUpdateException('Answer must be a string');
         }
-
-        $this->profileRepository->save($dto);
     }
 }

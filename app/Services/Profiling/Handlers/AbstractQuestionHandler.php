@@ -36,20 +36,11 @@ abstract class AbstractQuestionHandler
             throw new ProfileUpdateException('Answer cannot be empty');
         }
 
-        $lock = Cache::lock('profile_update_lock_' . $dto->getUserId(), 10);
-        if (!$lock->get()) {
-            throw new ProfileUpdateException('Profile update is currently in progress. Please try again later.');
-        }
-
-        try {
-            DB::transaction(function () use ($question, $dto) {
-                $this->updateProfile($question, $dto);
-                $this->transactionRepository->createNewTransaction($dto->getUserId());
-            });
-        } finally {
-            $lock->release();
-        }
-
+        DB::transaction(function () use ($question, $dto) {
+            $this->isAnswerValid($question, $dto);
+            $this->profileRepository->save($dto);
+            $this->transactionRepository->createNewTransaction($dto->getUserId());
+        });
     }
 
     /**
@@ -57,5 +48,5 @@ abstract class AbstractQuestionHandler
      * @param ProfileUpdateDTO $dto
      * @return void
      */
-    abstract protected function updateProfile(ProfilingQuestion $question, ProfileUpdateDTO $dto): void;
+    abstract protected function isAnswerValid(ProfilingQuestion $question, ProfileUpdateDTO $dto): void;
 }

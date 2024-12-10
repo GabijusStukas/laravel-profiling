@@ -22,4 +22,11 @@ class UserProfile extends Model
         'profiling_question_id',
         'answer',
     ];
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'answer' => 'array',
+    ];
 }
