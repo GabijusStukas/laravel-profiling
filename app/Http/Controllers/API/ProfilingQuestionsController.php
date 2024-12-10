@@ -13,7 +13,7 @@ use Throwable;
 /**
  * @OA\Tag(
  *     name="User Endpoints",
- *     description="API Endpoints for users"
+ *     description="API Endpoints for authenticated users"
  * )
  */
 class ProfilingQuestionsController extends BaseApiController
