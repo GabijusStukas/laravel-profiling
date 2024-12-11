@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use Database\Factories\UserWalletFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
  * @property int $user_id
- * @property int $balance
+ * @property float $balance
  */
 class UserWallet extends Model
 {
+    /** @use HasFactory<UserWalletFactory> */
+    use HasFactory;
+
     public const POINTS_TO_USD = 0.01;
 
     /**
@@ -19,5 +24,12 @@ class UserWallet extends Model
     protected $fillable = [
         'user_id',
         'balance',
+    ];
+
+    /**
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'balance' => 'float',
     ];
 }

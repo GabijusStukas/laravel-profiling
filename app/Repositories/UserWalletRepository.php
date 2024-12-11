@@ -20,14 +20,14 @@ class UserWalletRepository
 
     /**
      * @param int $userId
-     * @param int $points
+     * @param float $points
      * @return UserWallet
      */
-    public function addPointsToUserWallet(int $userId, int $points): UserWallet
+    public function addPointsToUserWallet(int $userId, float $points): UserWallet
     {
         $wallet = UserWallet::query()->firstOrCreate(['user_id' => $userId]);
 
-        $wallet->balance += (float)$points;
+        $wallet->balance += $points;
         $wallet->save();
 
         return $wallet;
