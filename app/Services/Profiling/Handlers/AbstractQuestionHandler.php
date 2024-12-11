@@ -27,14 +27,9 @@ abstract class AbstractQuestionHandler
      * @param ProfilingQuestion $question
      * @param ProfileUpdateDTO $dto
      * @return void
-     * @throws ProfileUpdateException
      */
     public function handle(ProfilingQuestion $question, ProfileUpdateDTO $dto): void
     {
-        if (empty($dto->getAnswer())) {
-            throw new ProfileUpdateException('Answer cannot be empty');
-        }
-
         DB::transaction(function () use ($question, $dto) {
             $this->isAnswerValid($question, $dto);
             $this->profileRepository->save($dto);

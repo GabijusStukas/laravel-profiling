@@ -18,7 +18,7 @@ class DailyStatisticsService
     public function calculateDailyPoints(): void
     {
         try {
-            $date = now();
+            $date = now()->subDay();
 
             $transactions = PointsTransaction::query()->whereDate('created_at', $date)->get();
 

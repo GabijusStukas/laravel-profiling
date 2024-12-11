@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Database\Factories\UserFactory;
+use Database\Factories\ProfilingQuestionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -37,7 +37,7 @@ use Illuminate\Support\Collection;
  */
 class ProfilingQuestion extends Model
 {
-    /** @use HasFactory<UserFactory> */
+    /** @use HasFactory<ProfilingQuestionFactory> */
     use HasFactory;
 
     public const TYPE_MULTIPLE_CHOICE = 'multiple-choice';
